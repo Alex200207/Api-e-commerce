@@ -1,8 +1,8 @@
-const mysql = require('mysql2'); // USar la libreria
+import { createConnection } from 'mysql2';
 
-// Configuracion de la base de datos
-const config = mysql.createConnection({
-    host: 'localhost', //127.0.0.1 
+
+const config = createConnection({
+    host: 'localhost',
     user: 'root',
     password: 'alex2002',
     database: 'e-comersedb',
@@ -10,4 +10,14 @@ const config = mysql.createConnection({
     port: 3307
 });
 
-module.exports = config; // Exportar la configuracion
+
+config.connect(function (err) {
+    if (err) {
+        console.error('Error de conexión: ' + err.stack);
+        return;
+    }
+    console.log('Conexión exitosa con el id ' + config.threadId);
+})
+
+
+export default config;
