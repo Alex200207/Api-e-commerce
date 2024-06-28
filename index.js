@@ -1,8 +1,6 @@
 
 import express from "express";
 import cors from "cors";
-
-
 import productosRouter from "./routes/productos/productosRoutes.js";
 
 
@@ -18,6 +16,7 @@ app.use(cors());
 const port = 3000;
 
 app.use("/productos", productosRouter);
+
 
 
 app.listen(port, () => {
