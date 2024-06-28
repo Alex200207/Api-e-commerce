@@ -58,11 +58,11 @@ const actualizarProducto = async (req, res) => {
   const { id } = req.params;
   const producto = req.body;
   try {
-      const resultado = await actualizarProductoQuery(id, producto);
-      res.send('Producto actualizado correctamente');
+    await actualizarProductoQuery(id, producto);
+    res.json({ message: 'Producto actualizado correctamente' });
   } catch (error) {
-      console.error('Error al actualizar producto:', error);
-      res.status(500).send('Error interno del servidor');
+    console.error('Error al actualizar producto:', error);
+    res.status(500).json({ error: 'Error interno del servidor' });
   }
 };
 
